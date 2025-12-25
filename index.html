@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>by NASA | Florist & Gifts</title>
+    <style>
+        /* --- 1. SETUP UTAMA --- */
+        :root {
+            --primary-navy: #050a18;
+            --primary-purple: #7b2cbf;
+            --accent-glow: #e0aaff;
+            --white: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --nav-bg: rgba(5, 10, 24, 0.9);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--white);
+            background: 
+                linear-gradient(to bottom, rgba(5, 10, 24, 0.85), rgba(60, 9, 108, 0.8)),
+                url('https://images.unsplash.com/photo-1538370965046-79c0d6907d47?q=80&w=2069&auto=format&fit=crop');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* --- 2. NAVIGATION BAR --- */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--nav-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 15px 0;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            font-weight: 600;
+            transition: 0.3s;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-glow);
+            text-shadow: 0 0 10px var(--primary-purple);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* --- 3. HEADER & LOGO --- */
+        header {
+            text-align: center;
+            padding: 60px 15px 40px;
+            scroll-margin-top: 100px; 
+        }
+
+        .logo-planet {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 40px rgba(224, 170, 255, 0.5);
+            margin-bottom: 10px;
+            transition: transform 0.5s ease;
+        }
+
+        .logo-planet:hover {
+            transform: rotate(5deg) scale(1.05);
+            box-shadow: 0 0 60px rgba(224, 170, 255, 0.8);
+        }
+
+        .sub-title {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 400;
+            letter-spacing: 6px;
+            margin-top: 10px;
+            text-transform: uppercase;
+            color: var(--white);
+            text-shadow: 0 0 10px var(--primary-purple);
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            margin-top: 20px;
+            color: #dcdcdc;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        /* Tombol Utama (Ungu) */
+        .main-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #3c096c, #9d4edd);
+            color: var(--white);
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 0 15px rgba(123, 44, 191, 0.5);
+            transition: 0.3s;
+            border: 1px solid rgba(255,255,255,0.3);
+            max-width: 90%;
+            white-space: normal;
+            text-align: center;
+        }
+        .main-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(157, 78, 221, 0.8);
+        }
+
+        /* Tombol Kedua (Drive di Header) - BARU DITAMBAHKAN */
+        .header-drive-btn {
+            display: inline-block;
+            margin-top: 15px; /* Jarak dari tombol atas */
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.6);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+            font-size: 0.95rem;
+        }
+        .header-drive-btn:hover {
+            background: var(--white);
+            color: var(--primary-navy);
+            box-shadow: 0 0 15px rgba(255,255,255,0.5);
+            transform: translateY(-2px);
+        }
+
+        /* --- 4. ABOUT SECTION --- */
+        #about {
+            text-align: center;
+            padding: 40px 20px;
+            margin: 20px auto;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            scroll-margin-top: 100px;
+        }
+        
+        #about h3 {
+            color: var(--accent-glow);
+            margin-bottom: 15px;
+        }
+        
+        #about p {
+            line-height: 1.6;
+            color: #ddd;
+        }
+
+        /* --- 5. KATALOG --- */
+        .catalog-title {
+            text-align: center;
+            margin-top: 60px;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 20px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            scroll-margin-top: 100px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .product-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 15px;
+            transition: transform 0.3s ease;
+            text-align: center;
+            display: flex;
+            flex-direction: column; 
+        }
+        .product-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-glow);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            filter: brightness(0.9);
+            transition: 0.3s;
+        }
+        .product-card:hover .product-img {
+            filter: brightness(1.1);
+        }
+
+        .product-name {
+            font-size: 1.3rem;
+            margin: 10px 0 5px;
+            font-weight: 600;
+        }
+        .product-price {
+            display: block;
+            color: var(--accent-glow);
+            margin-bottom: 15px;
+        }
+
+        /* --- TOMBOL DRIVE (KARTU) --- */
+        .drive-btn {
+            display: block;
+            width: 100%;
+            padding: 10px 0;
+            background: rgba(255, 255, 255, 0.1); 
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 10px;
+            transition: 0.3s;
+            font-size: 0.9rem;
+            margin-bottom: 10px; 
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        .drive-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: var(--accent-glow);
+        }
+
+        /* TOMBOL PESAN */
+        .order-btn-small {
+            display: block;
+            width: 100%;
+            padding: 10px 0;
+            background: var(--white); 
+            color: var(--primary-navy); 
+            text-decoration: none;
+            border-radius: 10px;
+            transition: 0.3s;
+            font-weight: bold;
+            border: 1px solid var(--white);
+        }
+        .order-btn-small:hover {
+            background: var(--accent-glow); 
+            border-color: var(--accent-glow);
+            color: var(--primary-navy);
+        }
+
+        /* --- 6. FOOTER --- */
+        footer {
+            text-align: center;
+            margin-top: 80px;
+            padding: 40px;
+            color: rgba(255,255,255,0.6);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            scroll-margin-top: 100px;
+        }
+
+        @media (max-width: 600px) {
+            .logo-planet { width: 180px; height: 180px; }
+            .sub-title { font-size: 1.1rem; letter-spacing: 4px; }
+            .main-btn { width: 85%; font-size: 0.95rem; }
+            .nav-container { gap: 10px; flex-wrap: wrap; }
+            .nav-link { font-size: 0.8rem; }
+        }
+        /* --- CSS KHUSUS FOOTER LINKS --- */
+        .contact-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--white);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 12px 25px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: 0.3s ease;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .contact-btn:hover {
+            background: var(--accent-glow);
+            color: var(--primary-navy);
+            box-shadow: 0 0 20px var(--accent-glow);
+            transform: translateY(-5px);
+            border-color: var(--accent-glow);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#collection" class="nav-link">Collection</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header id="home">
+            <img src="bynasa.png" alt="Logo NASA Florist" class="logo-planet">
+
+            <span class="sub-title">Florist & Gifts 🚀</span>
+            
+            <p class="tagline">✨ Pick a Star for Your Favorite Person ✨<br>Delivering Happiness to Your Orbit</p>
+            
+            <a href="https://www.instagram.com/_bynasa?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="main-btn">⬇️ Start Your Mission (Order Here)</a>
+            
+            <br> <a href="https://drive.google.com/drive/folders/163dY0px_MGJNOW2XYkdmeSutdjmDB-07?usp=sharing" target="_blank" class="header-drive-btn">📂 Lihat Full Katalog (Drive)</a>
+        </header>
+
+        <section id="about">
+            <h3>🪐 About The Mission</h3>
+            <p>
+                by NASA hadir untuk mengirimkan kebahagiaan ke orbit orang tersayangmu. 
+                Kami menyediakan berbagai rangkaian bunga hingga gift unik dengan tema antariksa yang spesial.
+                Setiap pesanan dibuat dengan cinta dan dikirim secepat roket! 🚀
+            </p>
+        </section>
+
+        <h2 id="collection" class="catalog-title">🪐 Galactic Collection 🪐</h2>
+
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="pipe.jpeg" alt="Bunga" class="product-img">
+                <div class="product-name">Pipe Cleaner 🧶</div>
+                <span class="product-price">Mulai Rp 10k</span>
+                
+                <a href="https://drive.google.com/drive/folders/163dY0px_MGJNOW2XYkdmeSutdjmDB-07?usp=sharing" class="drive-btn">📂 Lihat Katalog Drive</a>
+                
+                <a href="#contact" class="order-btn-small">Pesan Sekarang</a>
+            </div>
+
+            <div class="product-card">
+                <img src="konsul.png" alt="Money" class="product-img">
+                <div class="product-name">Money Bouquet 💸</div>
+                <span class="product-price">Available Soon</span>
+
+                 <a href="https://drive.google.com/drive/folders/163dY0px_MGJNOW2XYkdmeSutdjmDB-07?usp=sharing" class="drive-btn">📂 Lihat Katalog Drive</a>
+
+                <a href="#contact" class="order-btn-small">Pesan Sekarang</a>
+            </div>
+
+            <div class="product-card">
+                <img src="konsul.png" alt="Snack" class="product-img">
+                <div class="product-name">Snack Tower 🍫</div>
+                <span class="product-price">Available Soon</span>
+                
+                 <a href="https://drive.google.com/drive/folders/163dY0px_MGJNOW2XYkdmeSutdjmDB-07?usp=sharing" class="drive-btn">📂 Lihat Katalog Drive</a>
+
+                <a href="#contact" class="order-btn-small">Pesan Sekarang</a>
+            </div>
+            
+            <div class="product-card">
+                <img src="konsul.png" alt="Pipe Cleaner" class="product-img">
+                <div class="product-name">Artificial Flowers 💐</div>
+                <span class="product-price">Available Soon</span>
+                
+                 <a href="https://drive.google.com/drive/folders/163dY0px_MGJNOW2XYkdmeSutdjmDB-07?usp=sharing" class="drive-btn">📂 Lihat Katalog Drive</a>
+
+                <a href="#contact" class="order-btn-small">Pesan Sekarang</a>
+            </div>
+        </div>
+
+      <footer id="contact">
+            <h3>📡 Contact Control Center </h3>
+            <p>DM kami di @_bynasa untuk terhubung langsung ke orbit kami:</p>
+            
+            <div class="contact-container">
+                <a href="https://www.instagram.com/_bynasa?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="contact-btn">
+                    📸 Instagram
+                </a>
+                
+                </div>
+            <br>
+            <p style="font-size: 0.8rem; opacity: 0.7;">by NASA | Florist & Gifts © 2025 • Built with 💜 in the Galaxy</p>
+        </footer>
+    </div>
+
+</body>
+</html>
