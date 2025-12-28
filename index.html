@@ -144,10 +144,10 @@
             box-shadow: 0 0 25px rgba(157, 78, 221, 0.8);
         }
 
-        /* Tombol Kedua (Drive di Header) - BARU DITAMBAHKAN */
+        /* Tombol Kedua (Drive di Header) */
         .header-drive-btn {
             display: inline-block;
-            margin-top: 15px; /* Jarak dari tombol atas */
+            margin-top: 15px;
             background: transparent;
             border: 1px solid rgba(255,255,255,0.6);
             color: var(--white);
@@ -226,19 +226,6 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
-        .product-img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 15px;
-            margin-bottom: 15px;
-            filter: brightness(0.9);
-            transition: 0.3s;
-        }
-        .product-card:hover .product-img {
-            filter: brightness(1.1);
-        }
-
         .product-name {
             font-size: 1.3rem;
             margin: 10px 0 5px;
@@ -298,6 +285,84 @@
             scroll-margin-top: 100px;
         }
 
+        /* --- 7. IMAGE SLIDER (CAROUSEL) - UKURAN A4 --- */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            /* RUMUS A4 PORTRAIT: aspect-ratio: 210 / 297 */
+            aspect-ratio: 210 / 297; 
+            height: auto; 
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .slider {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            scrollbar-width: none; /* Firefox */
+        }
+        
+        .slider::-webkit-scrollbar { 
+            display: none; /* Chrome/Safari */
+        }
+
+        .slider img {
+            flex: 0 0 100%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Memastikan gambar penuh A4 */
+            scroll-snap-align: center;
+        }
+
+        /* Jika belum ada gambar slider (gambar tunggal standar) */
+        .product-img {
+            width: 100%;
+            /* MENGIKUTI UKURAN A4 JUGA */
+            aspect-ratio: 210 / 297;
+            height: auto;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            filter: brightness(0.9);
+            transition: 0.3s;
+        }
+        .product-card:hover .product-img {
+            filter: brightness(1.1);
+        }
+
+        /* Tombol Panah Kiri/Kanan */
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            z-index: 10;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+        }
+
+        .slider-btn:hover {
+            background: var(--accent-glow);
+            color: var(--primary-navy);
+        }
+
+        .prev { left: 10px; }
+        .next { right: 10px; }
+
         @media (max-width: 600px) {
             .logo-planet { width: 180px; height: 180px; }
             .sub-title { font-size: 1.1rem; letter-spacing: 4px; }
@@ -305,6 +370,7 @@
             .nav-container { gap: 10px; flex-wrap: wrap; }
             .nav-link { font-size: 0.8rem; }
         }
+
         /* --- CSS KHUSUS FOOTER LINKS --- */
         .contact-container {
             display: flex;
@@ -374,8 +440,32 @@
         <h2 id="collection" class="catalog-title">🪐 Galactic Collection 🪐</h2>
 
         <div class="product-grid">
+            
             <div class="product-card">
-                <img src="pipe.png" alt="Bunga" class="product-img">
+                <div class="slider-container">
+                    <button class="slider-btn prev" onclick="moveSlide(this, -1)">&#10094;</button>
+                    
+                    <div class="slider">
+                        <img src="3.png" alt="Slide 1">
+                        <img src="4.png" alt="Slide 2">
+                        <img src="5.png" alt="Slide 3">
+                        <img src="6.png" alt="Slide 4">
+                        <img src="7.png" alt="Slide 5">
+                        <img src="8.png" alt="Slide 6">
+                        <img src="9.png" alt="Slide 7">
+                        <img src="10.png" alt="Slide 8">
+                        <img src="11.png" alt="Slide 9">
+                        <img src="12.png" alt="Slide 10">
+                        <img src="13.png" alt="Slide 11">
+                        <img src="14.png" alt="Slide 12">
+                        <img src="15.png" alt="Slide 13">
+                        <img src="16.png" alt="Slide 14">
+                        <img src="17.png" alt="Slide 15">
+                    </div>
+
+                    <button class="slider-btn next" onclick="moveSlide(this, 1)">&#10095;</button>
+                </div>
+
                 <div class="product-name">Pipe Cleaner 🧶</div>
                 <span class="product-price">Mulai Rp 10k</span>
                 
@@ -385,7 +475,17 @@
             </div>
 
             <div class="product-card">
-                <img src="konsul.png" alt="Money" class="product-img">
+                <div class="slider-container">
+                    <button class="slider-btn prev" onclick="moveSlide(this, -1)">&#10094;</button>
+                    
+                    <div class="slider">
+                        <img src="18.png" alt="Money Bouquet Slide 1">
+                        <img src="19.png" alt="Money Bouquet Slide 2">
+                    </div>
+
+                    <button class="slider-btn next" onclick="moveSlide(this, 1)">&#10095;</button>
+                </div>
+
                 <div class="product-name">Money Bouquet 💸</div>
                 <span class="product-price">Available Soon</span>
 
@@ -417,18 +517,35 @@
 
       <footer id="contact">
             <h3>📡 Contact Control Center </h3>
-            <p>DM kami di @_bynasa untuk terhubung langsung ke orbit kami:</p>
+            <p>DM kami di sosial media untuk terhubung langsung ke orbit kami:</p>
             
             <div class="contact-container">
                 <a href="https://www.instagram.com/_bynasa?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="contact-btn">
                     📸 Instagram
                 </a>
-                
-                </div>
+
+                <a href="https://www.tiktok.com/@bynasa.official" target="_blank" class="contact-btn">
+                    🎵 TikTok
+                </a>
+            </div>
+
             <br>
             <p style="font-size: 0.8rem; opacity: 0.7;">by NASA | Florist & Gifts © 2025 • Built with 💜 in the Galaxy</p>
         </footer>
     </div>
+
+    <script>
+        function moveSlide(button, direction) {
+            const container = button.parentElement;
+            const slider = container.querySelector('.slider');
+            const scrollAmount = slider.clientWidth;
+
+            slider.scrollBy({
+                left: scrollAmount * direction,
+                behavior: 'smooth'
+            });
+        }
+    </script>
 
 </body>
 </html>
